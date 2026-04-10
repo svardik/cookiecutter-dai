@@ -62,17 +62,17 @@ lint: ## check style with flake8 and isort
 	invoke lint
 
 .PHONY: lint-{{ cookiecutter.project_slug }}
-lint: ## check style with flake8 and isort
+lint-{{ cookiecutter.project_slug }}: ## check style with ruff
 	ruff check {{ cookiecutter.project_slug }}/
 	ruff format --check --diff {{ cookiecutter.project_slug }}/
 
 .PHONY: lint-tests
-lint: ## check style with flake8 and isort
+lint-tests: ## check style with ruff
 	ruff check tests/
 	ruff format --check --diff tests/
 
 .PHONY: fix-lint
-fix-lint: ## fix lint issues using autoflake, autopep8, and isort
+fix-lint: ## fix lint issues using ruff
 	invoke fix-lint
 
 

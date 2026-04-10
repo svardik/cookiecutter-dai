@@ -168,7 +168,6 @@ ignore = [
     # pydocstyle
     "D107",  # Missing docstring in __init__
     "D417",   # Missing argument descriptions in the docstring
-    "PD901",
     "PD101",
 ]
 
