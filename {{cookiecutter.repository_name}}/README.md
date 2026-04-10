@@ -42,11 +42,11 @@ Also, although it is not strictly required, the usage of a [virtualenv](https://
 is highly recommended in order to avoid interfering with other software installed in the system
 in which **{{ cookiecutter.project_name }}** is run.
 
-These are the minimum commands needed to create a virtualenv using python3.9 for **{{ cookiecutter.project_name }}**:
+These are the minimum commands needed to create a virtualenv using python3.10 for **{{ cookiecutter.project_name }}**:
 
 ```bash
 pip install virtualenv
-virtualenv -p $(which python3.9) {{ cookiecutter.repository_name }}-venv
+virtualenv -p $(which python3.10) {{ cookiecutter.repository_name }}-venv
 ```
 
 Afterwards, you have to execute this command to activate the virtualenv:

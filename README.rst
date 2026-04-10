@@ -19,7 +19,7 @@ Features
 * Testing setup with ``pytest`` for modern and efficient testing workflows
 * Github-Actions_: Ready for Github Actions Continuous Integration testing
 * Travis-CI_: Ready for Travis Continuous Integration testing
-* Tox_ testing: Setup to easily test for Python 3.9, 3.10, 3.11, 3.12, 3.13, 3.14
+* Tox_ testing: Setup to easily test for Python 3.10, 3.11, 3.12, 3.13, 3.14
 * Sphinx_ docs: Documentation ready for generation, automatic building and deploying to gh-pages (strongly recommended)
 * Bumpversion_: Pre-configured version bumping with a single command
 * Auto-release to PyPI_ when you push a new tag to master (strongly recommended)
@@ -52,7 +52,7 @@ Then:
 
 2. Create and test your development environment
 
-   * Create a virtual environment of your choice ( e.g. ``conda create -n project_name_env python=3.6``, ``virtualenv``, ``pyenv``, etc.).
+   * Create a virtual environment of your choice ( e.g. ``conda create -n project_name_env python=3.10``, ``virtualenv``, ``pyenv``, etc.).
    * Install the dev environment (``make install-develop``).
    * Check that the tests work (``make test``)
    * Check that the linter works (``make lint``)
@@ -114,7 +114,7 @@ Let this template handle the little things. You will avoid the following:
 * omitting a ``LICENSE`` which means that other people cannot legally reuse your
   software
 * having your tests pass locally but finding that a stranger on the internet
-  can't install your code because they use Python 3.5 and you use Python 3.6
+  can't install your code because they use Python 3.10 and you use Python 3.14
 * having a sequence of 8 commits (``add Travis``, ``see if this fix makes Travis
   work now``, ``Travis still doesn't work``, etc.) because you are rolling your own
   configuration for different services one project at a time
@@ -205,8 +205,8 @@ things are files and folders and I'll give you a quick overview of what they
 are/do.
 
 * Tox_ (tox.ini): A system that can run all kinds of tests for you. For
-  instance, you can test your code on various versions (Python 3.9,
-  3.10, 3.11, 3.12, 3.13, 3.14) and test your code on linters as well.
+  instance, you can test your code on various versions (Python 3.10, 
+  3.11, 3.12, 3.13, 3.14) and test your code on linters as well.
 
 * Travis-CI_ (travis.yml): A continuous integration system. That means every
   time you push a commit it will simulate downloading your project, installing
