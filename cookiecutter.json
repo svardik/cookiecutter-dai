@@ -8,7 +8,7 @@
   "project_slug": "{{ cookiecutter.package_name.replace('-', '_') }}",
   "repository_name": "{{ cookiecutter.package_name }}",
   "project_short_description": "Python Boilerplate contains all the boilerplate you need to create a Python package.",
-  "license_owner": "{{ 'MIT Data To AI Lab' if cookiecutter.github_username != cookiecutter.github_owner else cookiecutter.full_name.replace(\"\\'\", \"\\\\\\'\") }}",
+  "license_owner": "{{ 'MIT Data To AI Lab' if cookiecutter.github_username != cookiecutter.github_owner else cookiecutter.full_name }}",
   "license_owner_email": "{{ 'dailabmit@gmail.com' if cookiecutter.github_username != cookiecutter.github_owner else cookiecutter.email }}",
   "pypi_username": "{{ 'mit_dai_lab' if cookiecutter.github_username != cookiecutter.github_owner else cookiecutter.github_username }}",
   "version": "0.1.0.dev0",

@@ -16,10 +16,10 @@ For any bugs, open an Issue.
 Features
 --------
 
-* Testing setup with ``unittest`` and ``pytest``
+* Testing setup with ``pytest`` for modern and efficient testing workflows
 * Github-Actions_: Ready for Github Actions Continuous Integration testing
 * Travis-CI_: Ready for Travis Continuous Integration testing
-* Tox_ testing: Setup to easily test for Python 3.8, 3.9, 3.10, 3.11, 3.12
+* Tox_ testing: Setup to easily test for Python 3.9, 3.10, 3.11, 3.12, 3.13, 3.14
 * Sphinx_ docs: Documentation ready for generation, automatic building and deploying to gh-pages (strongly recommended)
 * Bumpversion_: Pre-configured version bumping with a single command
 * Auto-release to PyPI_ when you push a new tag to master (strongly recommended)
@@ -37,6 +37,12 @@ Generate a Python package project (this will create a new subdirectory of your
 current working directory)::
 
     cookiecutter gh:DAI-Lab/cookiecutter-pypackage
+
+Alternatively, you can clone the repository and run cookiecutter locally::
+
+    git clone https://github.com/DAI-Lab/cookiecutter-pypackage.git
+    cd cookiecutter-pypackage
+    cookiecutter .
 
 Then:
 
@@ -199,8 +205,8 @@ things are files and folders and I'll give you a quick overview of what they
 are/do.
 
 * Tox_ (tox.ini): A system that can run all kinds of tests for you. For
-  instance, you can test your code on various versions (Python 3.8,
-  3.9, 3.10, 3.11, 3.12) and test your code on linters as well.
+  instance, you can test your code on various versions (Python 3.9,
+  3.10, 3.11, 3.12, 3.13, 3.14) and test your code on linters as well.
 
 * Travis-CI_ (travis.yml): A continuous integration system. That means every
   time you push a commit it will simulate downloading your project, installing
@@ -214,15 +220,12 @@ are/do.
   documentation in Python projects. It is more powerful than Markdown but a bit
   harder to learn. See `reStructuredText reference`_.
 
-* setup.py: a file that contains configuration info for installing your project.
-  Among many other things, our version of setup.py includes lists of
-  dependencies for people who want to run the tests and dependencies developers
-  who want to hack on the project, build documentation, and create new releases.
-  See setup.py_.
-
-* setup.cfg: This is a general configuration file that can be read by all sorts
-  of development tools, including ``setuptools``, ``flake8``, ``isort``,
-  ``bumpversion``, and more. It uses the `INI file format`_.
+* pyproject.toml: This file is the modern standard for Python project 
+  configuration. It contains all the metadata about your project, including 
+  dependencies, optional dependencies, and build system requirements. It replaces 
+  the need for setup.py and setup.cfg in most cases. Tools like ``setuptools``, 
+  ``pip``, and ``tox`` use this file to understand how to build, install, and 
+  test your project.
 
 * PyPI_: A website that hosts and allows for easy install of python libraries
   (this is where pip install downloads from). PyPI and the community of python
@@ -261,6 +264,5 @@ are/do.
 .. _Bumpversion: https://github.com/peritus/bumpversion
 .. _PyPI: https://pypi.python.org/pypi
 .. _`INI file format`: https://en.wikipedia.org/wiki/INI_file
-.. _`setup.py`: https://packaging.python.org/tutorials/distributing-packages/#setup-py
 .. _`MANIFEST.in`: https://packaging.python.org/tutorials/distributing-packages/#manifest-in
 .. _`reStructuredText reference`: https://gist.github.com/ionelmc/e876b73e2001acd2140f
