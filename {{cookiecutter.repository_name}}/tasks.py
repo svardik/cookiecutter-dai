@@ -6,6 +6,7 @@ import re
 import shutil
 import stat
 from pathlib import Path
+from packaging.version import Version
 
 from invoke import task
 
@@ -36,8 +37,8 @@ def _validate_python_version(line):
         version_number = python_version.split(comparison)[-1].replace("'", "")
         comparison_function = COMPARISONS[comparison]
         is_valid = is_valid and comparison_function(
-            pkg_resources.parse_version(platform.python_version()),
-            pkg_resources.parse_version(version_number),
+            Version(platform.python_version()),
+            Version(version_number),
         )
 
     return is_valid
