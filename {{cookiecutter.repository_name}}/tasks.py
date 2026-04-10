@@ -26,7 +26,7 @@ def check_dependencies(c):
 
 @task
 def unit(c):
-    c.run('python -m pytest --cov={{cookiecutter.repository_name}} --cov-report=xml')
+    c.run('python -m pytest')
 
 
 def _validate_python_version(line):

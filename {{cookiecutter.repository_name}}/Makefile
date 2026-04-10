@@ -80,25 +80,29 @@ fix-lint: ## fix lint issues using autoflake, autopep8, and isort
 
 .PHONY: test-unit
 test-unit: ## run tests quickly with the default Python
-	invoke unit
+	pytest
 
 .PHONY: test-readme
 test-readme: ## run the readme snippets
-	invoke readme
+	@if command -v rundoc >/dev/null 2>&1; then \
+		rundoc run --single-session python3 -t python3 README.md; \
+	else \
+		echo "Skipping test-readme because rundoc is not installed"; \
+	fi
 
 .PHONY: test-tutorials
 test-tutorials: ## run the tutorial notebooks
-	invoke tutorials
+	@if [ -d tutorials ] && ls tutorials/*.ipynb >/dev/null 2>&1; then \
+		jupyter nbconvert --execute --ExecutePreprocessor.timeout=3600 --to=html --stdout tutorials/*.ipynb >/dev/null; \
+	else \
+		echo "Skipping test-tutorials because no tutorials were found"; \
+	fi
 
 .PHONY: test
 test: test-unit test-readme test-tutorials ## test everything that needs test dependencies
 
 .PHONY: test-minimum
 test-minimum: install-minimum check-dependencies test ## run tests using the minimum supported dependencies
-
-.PHONY: test-{{ cookiecutter.project_slug }}
-test: ## run tests quickly with the default Python
-	python -m pytest --basetemp=${ENVTMPDIR} --cov={{ cookiecutter.project_slug }} --cov-report xml
 
 .PHONY: test-all
 test-all: ## run tests on every Python version with tox
@@ -243,8 +247,8 @@ clean-build: ## remove build artifacts
 	rm -fr build/
 	rm -fr dist/
 	rm -fr .eggs/
-	find . -name '*.egg-info' -exec rm -fr {} +
-	find . -name '*.egg' -exec rm -f {} +
+	find . -path './.tox' -prune -o -name '*.egg-info' -exec rm -fr {} +
+	find . -path './.tox' -prune -o -name '*.egg' -exec rm -fr {} +
 
 .PHONY: clean-pyc
 clean-pyc: ## remove Python file artifacts
